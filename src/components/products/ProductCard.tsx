@@ -1,8 +1,9 @@
 
 import { Link } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 import type { Product } from "../../types/product";
+import { useShop } from "../../context/ShopContext";
 
 interface ProductCardProps {
     product: Product;
@@ -10,6 +11,12 @@ interface ProductCardProps {
 }
 
 function ProductCard({ product, onWishlistClick }: ProductCardProps) {
+    const { wishlist } = useShop();
+
+    const isWishlisted = wishlist.some(
+        (item) => item.id === product.id
+    );
+
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat("en-IN", {
             style: "currency",
@@ -53,12 +60,28 @@ function ProductCard({ product, onWishlistClick }: ProductCardProps) {
                     <button
                         type="button"
                         onClick={() => onWishlistClick(product)}
-                        aria-label={`Add ${product.title} to wishlist`}
+                        aria-label={
+                            isWishlisted
+                                ? "Remove from wishlist"
+                                : "Add to wishlist"
+                        }
+                        aria-pressed={isWishlisted}
                         className="absolute top-3 right-3 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors"
                     >
-                        <FaRegHeart size={17} />
+                        {isWishlisted ? (
+                            <FaHeart
+                                size={17}
+                                className="text-red-500"
+                            />
+                        ) : (
+                            <FaRegHeart
+                                size={17}
+                                className="text-black"
+                            />
+                        )}
                     </button>
                 )}
+
             </div>
 
             <div className="pt-4">

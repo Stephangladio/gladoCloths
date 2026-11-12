@@ -1,4 +1,3 @@
-
 import type { Product } from "../types/product";
 
 import menTshirtImage from "../../public/images/products/men-tshirt.png";
