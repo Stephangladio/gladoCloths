@@ -1,7 +1,7 @@
 import type { Product } from "../types/product";
 
 import menTshirtImage from "../../public/images/products/men-tshirt.png";
-import womenShirtImage from "../../public/images/products/women-casual.jpeg";
+import womenShirtImage from "../../public/images/products/women-tshirt.png";
 import menTrousersImage from "../../public/images/products/men-trousers.png";
 import womenDressImage from "../../public/images/products/women-dress.png";
 import menJacketImage from "../../public/images/products/men-jacket.png";
@@ -23,7 +23,7 @@ export const products: Product[] = [
     },
     {
         id: 2,
-        title: "Casual T-Shirt",
+        title: "Classic Oversized Shirt",
         description: "A relaxed-fit shirt with a timeless look.",
         price: 1299,
         oldPrice: 1599,
